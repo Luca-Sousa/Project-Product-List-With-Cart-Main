@@ -1,101 +1,101 @@
 import { useState } from "react";
-
-interface ImageData {
-  thumbnail: string;
-  mobile: string;
-  tablet: string;
-  desktop: string;
-}
+import { Product } from "../types";
 
 interface ProductCardProps {
-  image: ImageData;
-  name: string;
-  category: string;
-  price: number;
+  product: Product;
+  onQuantityChange: (delta: number, product: Product) => void;
 }
 
-export function ProductCard({
-  image,
-  name,
-  category,
-  price,
-}: ProductCardProps) {
-  const [quantityOfItems, setQuantityOfItems] = useState(1);
+export function ProductCard({ product, onQuantityChange }: ProductCardProps) {
+  const [quantityOfItems, setQuantityOfItems] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
   const handleAddToCartClick = () => {
     setIsButtonVisible(false);
+    setQuantityOfItems(1);
+    onQuantityChange(1, product);
   };
 
   const DecrementQuantitysItems = () => {
-    if (quantityOfItems <= 1) {
-      return;
+    if (quantityOfItems > 1) {
+      setQuantityOfItems((prevQuantity) => prevQuantity - 1);
+      onQuantityChange(-1, product);
+    } else {
+      setQuantityOfItems(1);
     }
-    setQuantityOfItems(quantityOfItems - 1);
   };
 
   const IncrementQuantitysItems = () => {
-    if (quantityOfItems < 1) {
-      return;
+    if (quantityOfItems >= 1) {
+      setQuantityOfItems((prevQuantity) => prevQuantity + 1);
+      onQuantityChange(1, product);
     }
-    setQuantityOfItems(quantityOfItems + 1);
   };
 
   return (
     <div className="flex flex-col gap-8">
       <div className="relative">
         <img
-          src={image.desktop}
-          alt={name}
+          src={product.image.desktop}
+          alt={product.name}
           className={`rounded-2xl ${
-            isButtonVisible == false && "ring-4 ring-colorRed"
+            !isButtonVisible && "ring-4 ring-colorRed"
           }`}
         />
+
         <button
           onClick={handleAddToCartClick}
-          className="w-2/5 absolute top-[93%] left-1/2 -translate-x-1/2"
+          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2"
         >
           <div
             className={`${
               isButtonVisible ? "flex" : "hidden"
             } bg-colorRose50 items-center justify-center gap-2 rounded-full py-3 border border-colorRose300`}
           >
-            <img className="size-5" src="/public/icon-add-to-cart.svg" alt="" />
+            <img
+              className="size-5"
+              src="/public/icon-add-to-cart.svg"
+              alt="Icon Add to Card"
+            />
             <p className="font-semibold text-colorRose900">Add to Cart</p>
           </div>
+        </button>
+
+        <div
+          className={`${
+            isButtonVisible ? "hidden" : "flex"
+          } w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 bg-colorRed items-center justify-between rounded-full px-3 py-3`}
+        >
+          <div
+            onClick={DecrementQuantitysItems}
+            className="rounded-full border p-1 cursor-pointer hover:scale-110"
+          >
+            <img
+              className="size-3"
+              src="/public/icon-decrement-quantity.svg"
+              alt="Icon Decrement Quantity"
+            />
+          </div>
+
+          <div className="text-colorRose100">{quantityOfItems}</div>
 
           <div
-            className={`${
-              isButtonVisible ? "hidden" : "flex"
-            } bg-colorRed items-center justify-between rounded-full px-3 py-3`}
+            onClick={IncrementQuantitysItems}
+            className="rounded-full border p-1 cursor-pointer hover:scale-110"
           >
-            <div className="rounded-full border p-1 hover:scale-110">
-              <img
-                onClick={DecrementQuantitysItems}
-                className="size-3"
-                src="/public/icon-decrement-quantity.svg"
-                alt=""
-              />
-            </div>
-
-            <div className="text-colorRose100">{quantityOfItems}</div>
-
-            <div className="rounded-full border p-1 hover:scale-110">
-              <img
-                onClick={IncrementQuantitysItems}
-                className="size-3"
-                src="/public/icon-increment-quantity.svg"
-                alt=""
-              />
-            </div>
+            <img
+              className="size-3"
+              src="/public/icon-increment-quantity.svg"
+              alt="Icon Increment Quantity"
+            />
           </div>
-        </button>
+        </div>
       </div>
 
       <div>
-        <p className="text-colorRose500">{category}</p>
-        <h2 className="text-colorRose900 font-bold">{name}</h2>
-        <p className="text-colorRed font-bold">${price.toFixed(2)}</p>
+        <p className="text-colorRose500">{product.category}</p>
+        <h2 className="text-colorRose900 font-bold">{product.name}</h2>
+        <p className="text-colorRed font-bold">${product.price.toFixed(2)}</p>
       </div>
     </div>
   );
