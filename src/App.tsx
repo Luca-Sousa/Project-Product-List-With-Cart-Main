@@ -1,56 +1,28 @@
+import { ProductCard } from "./components/ProductCard";
+import Data from "./data.json";
+
 export function App() {
-
   return (
-    <div className="container ">
-Desserts
+    <div className="max-w-[1440px] mx-auto flex gap-4 my-16">
+      <div className="flex-1 space-y-6">
+        <h2 className="font-bold text-4xl text-colorRose900">Desserts</h2>
 
-Waffle with Berries
-Waffle
-6.50
-Add to Cart
-
-Vanilla Bean Crème Brûlée
-Crème Brûlée
-7.00
-Add to Cart
-
-Macaron Mix of Five
-Macaron
-8.00
-Add to Cart
-
-Classic Tiramisu
-Tiramisu
-5.50
-Add to Cart
-
-Pistachio Baklava
-Baklava
-4.00
-Add to Cart
-
-Lemon Meringue Pie
-Pie
-5.00
-Add to Cart
-
-Red Velvet Cake
-Cake
-4.50
-Add to Cart
-
-Salted Caramel Brownie
-Brownie
-4.50
-Add to Cart
-
-Vanilla Panna Cotta
-Panna Cotta
-6.50
-Add to Cart
-
-{/* Your Cart (<!-- Quantity -->) */}
-Your added items will appear here
+        <div className="w-full grid grid-cols-3 gap-6">
+          {Data.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              name={product.name}
+              category={product.category}
+              price={product.price}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="max-w-96">
+        <h2>Your Cart ()</h2>
+         Your added items will appear here
+      </div>
     </div>
-  )
+  );
 }
