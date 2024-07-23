@@ -20,6 +20,15 @@ export default {
         RedHatText: "Red Hat Text",
       }
     },
+    screens: {
+      '2xl': {'max': '1535px'},
+      'xl': {'max': '1320px'},
+      'lg': {'max': '1023px'},
+      'md': {'max': '767px'},
+      'sm': {'max': '639px'},
+      'xs': {'max': '549px'},
+      '2xs': {'max': '474px'},
+    },
   },
   plugins: [],
 }

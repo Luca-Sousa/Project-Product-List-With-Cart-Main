@@ -1,15 +1,18 @@
-import { useState } from "react";
-import { Product } from "../types";
+import { useEffect, useState } from "react";
+import { ProductCardProps } from "../types";
 import { MinusCircle, PlusCircle } from "lucide-react";
 
-interface ProductCardProps {
-  product: Product;
-  onQuantityChange: (delta: number, product: Product) => void;
-}
-
-export function ProductCard({ product, onQuantityChange }: ProductCardProps) {
+export function ProductCard({ product, onQuantityChange, reset, onReset }: ProductCardProps) {
   const [quantityOfItems, setQuantityOfItems] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  useEffect(() => {
+    if (reset) {
+      setQuantityOfItems(0);
+      setIsButtonVisible(true);
+      onReset(product.id);
+    }
+  }, [reset, product.id, onReset]);
 
   const handleAddToCartClick = () => {
     setIsButtonVisible(false);

@@ -9,45 +9,74 @@ export function App() {
   const [totalValue, setTotalValue] = useState(0);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [resetProductIds, setResetProductIds] = useState<string[]>([]);
 
   const handleQuantityChange = (delta: number, product: Product) => {
     setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + delta);
     setTotalValue((prevTotalValue) => prevTotalValue + delta * product.price);
 
     setSelectedProducts((prevSelectedProducts) => {
-      const existingProductIndex = prevSelectedProducts.findIndex(
-        (p) => p.id === product.id
-      );
+      const updatedProducts = prevSelectedProducts
+        .map((p) =>
+          p.id === product.id
+            ? { ...p, quantity: (p.quantity || 0) + delta }
+            : p
+        )
+        .filter((p) => p.quantity! > 0);
 
-      if (existingProductIndex !== -1) {
-        const updatedProducts = [...prevSelectedProducts];
-        const updatedQuantity =
-          (updatedProducts[existingProductIndex].quantity || 0) + delta;
-
-        if (updatedQuantity <= 0) {
-          updatedProducts.splice(existingProductIndex, 1);
-        } else {
-          updatedProducts[existingProductIndex] = {
-            ...product,
-            quantity: updatedQuantity,
-          };
-        }
-
-        return updatedProducts;
-      } else if (delta > 0) {
-        return [...prevSelectedProducts, { ...product, quantity: delta }];
+      if (!updatedProducts.some((p) => p.id === product.id) && delta > 0) {
+        updatedProducts.push({ ...product, quantity: delta });
       }
 
-      return prevSelectedProducts;
+      return updatedProducts;
     });
+  };
+
+  const handleRemoveProduct = (productId: string) => {
+    setSelectedProducts((prevSelectedProducts) => {
+      const productToRemove = prevSelectedProducts.find(
+        (p) => p.id === productId
+      );
+
+      if (!productToRemove) {
+        return prevSelectedProducts;
+      }
+
+      setTotalQuantity(
+        (prevTotalQuantity) =>
+          prevTotalQuantity - (productToRemove.quantity || 0)
+      );
+
+      setTotalValue(
+        (prevTotalValue) =>
+          prevTotalValue -
+          productToRemove.price * (productToRemove.quantity || 0)
+      );
+
+      setResetProductIds((prevIds) => [...prevIds, productId]);
+
+      return prevSelectedProducts.filter((p) => p.id !== productId);
+    });
+  };
+
+  const handleResetProduct = (productId: string) => {
+    setResetProductIds((prevIds) => prevIds.filter((id) => id !== productId));
   };
 
   const handleOpenModal = () => {
     setIsOpenModal(true);
   };
 
-  const handleCloseModal = () => {
+  const handleNewOrder = () => {
     setIsOpenModal(false);
+    clearCart();
+  };
+
+  const clearCart = () => {
+    setTotalQuantity(0);
+    setTotalValue(0);
+    setSelectedProducts([]);
+    setResetProductIds(selectedProducts.map((product) => product.id));
   };
 
   return (
@@ -61,6 +90,8 @@ export function App() {
               key={product.id}
               product={product}
               onQuantityChange={handleQuantityChange}
+              reset={resetProductIds.includes(product.id)}
+              onReset={handleResetProduct}
             />
           ))}
         </div>
@@ -94,7 +125,10 @@ export function App() {
                 </div>
               </div>
 
-              <XCircle className="size-5 text-colorRose300 cursor-pointer hover:scale-125 hover:text-colorRose900" />
+              <XCircle
+                onClick={() => handleRemoveProduct(product.id)}
+                className="size-5 text-colorRose300 cursor-pointer hover:scale-125 hover:text-colorRose900"
+              />
             </ul>
           ))}
         </div>
@@ -178,7 +212,7 @@ export function App() {
               </div>
 
               <button
-                onClick={handleCloseModal}
+                onClick={handleNewOrder}
                 className="w-full py-3 rounded-full bg-colorRed text-colorRose100 hover:bg-red-800 transition duration-300 ease-in-out"
               >
                 Start New Order
