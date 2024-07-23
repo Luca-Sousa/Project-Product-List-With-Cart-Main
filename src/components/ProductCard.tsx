@@ -45,17 +45,32 @@ export function ProductCard({
   return (
     <div className="flex flex-col gap-8">
       <div className="relative">
-        <img
+        <picture>
+          <source srcSet={product.image.desktop} media="(min-width: 1024px)" />
+          <source
+            srcSet={product.image.tablet}
+            media="(min-width: 768px) and (max-width: 1023px)"
+          />
+          <source srcSet={product.image.mobile} media="(max-width: 767px)" />
+          <img
+            src={product.image.desktop}
+            alt={product.name}
+            className={`rounded-2xl ${
+              !isButtonVisible && "ring-4 ring-colorRed"
+            } w-full`}
+          />
+        </picture>
+        {/* <img
           src={product.image.desktop}
           alt={product.name}
           className={`rounded-2xl ${
             !isButtonVisible && "ring-4 ring-colorRed"
           }`}
-        />
+        /> */}
 
         <button
           onClick={handleAddToCartClick}
-          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 group"
+          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 group xl:w-4/6 lg:w-3/4 md:w-1/2 sm:w-3/4 xs:w-1/2"
         >
           <div
             className={`${
@@ -76,7 +91,7 @@ export function ProductCard({
         <div
           className={`${
             isButtonVisible ? "hidden" : "flex"
-          } w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 bg-colorRed items-center justify-between rounded-full px-3 py-3`}
+          } w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 bg-colorRed items-center justify-between rounded-full px-3 py-3 xl:w-4/6 lg:w-3/4 md:w-1/2 sm:w-3/4 xs:w-1/2`}
         >
           <div
             onClick={DecrementQuantitysItems}
@@ -96,7 +111,7 @@ export function ProductCard({
         </div>
       </div>
 
-      <div>
+      <div className="py-1 lg:py-2">
         <p className="text-colorRose500">{product.category}</p>
         <h2 className="text-colorRose900 font-bold">{product.name}</h2>
         <p className="text-colorRed font-bold">${product.price.toFixed(2)}</p>

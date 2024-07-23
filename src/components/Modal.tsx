@@ -7,8 +7,8 @@ export function Modal({
   handleNewOrder,
 }: ModalProps) {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-      <div className="w-[480px] h-fit bg-colorRose50 p-6 rounded-xl space-y-4">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/60 xs:items-end xs:justify-start">
+      <div className="w-[480px] h-fit bg-colorRose50 p-6 rounded-xl space-y-4 xs:w-full xs:rounded-none xs:rounded-t-2xl">
         <CheckCircle className="size-10 text-colorGreen" />
 
         <div className="space-y-1">
@@ -22,7 +22,7 @@ export function Modal({
           {selectedProducts.map((product) => (
             <ul
               key={product.id}
-              className="flex justify-between items-center border-b border-colorRose200 px-4 py-3"
+              className="flex justify-between items-center border-b border-colorRose200 px-4 py-3 gap-2"
             >
               <li className="flex gap-4 items-center">
                 <img
@@ -31,8 +31,8 @@ export function Modal({
                   alt="Image Thumbnail"
                 />
 
-                <ul className="text-sm space-y-1">
-                  <li className="text-colorRose900 font-semibold">
+                <ul className="text-sm space-y-1 flex-1 min-w-0">
+                  <li className="text-colorRose900 font-semibold truncate">
                     {product.name}
                   </li>
                   <li className="font-semibold flex gap-3">
