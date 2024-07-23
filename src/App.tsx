@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProductCard } from "./components/ProductCard";
-import Data from "./data.json";
+import { ProductsData } from "./ProductsData";
 import { Product } from "./types";
 import { CheckCircle, XCircle } from "lucide-react";
 
@@ -85,7 +85,7 @@ export function App() {
         <h2 className="font-bold text-4xl text-colorRose900">Desserts</h2>
 
         <div className="w-full grid grid-cols-3 gap-6">
-          {Data.map((product: Product) => (
+          {ProductsData.map((product: Product) => (
             <ProductCard
               key={product.id}
               product={product}
