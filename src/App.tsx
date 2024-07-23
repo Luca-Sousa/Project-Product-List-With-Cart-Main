@@ -3,6 +3,7 @@ import { ProductCard } from "./components/ProductCard";
 import { ProductsData } from "./ProductsData";
 import { Product } from "./types";
 import { CheckCircle, XCircle } from "lucide-react";
+import IconCarbonNeutral from "./assets/icons/icon-carbon-neutral.svg";
 
 export function App() {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -143,8 +144,8 @@ export function App() {
         <div className="flex items-center justify-center gap-2 bg-colorRose100 rounded-lg py-4">
           <img
             className="size-5"
-            src="/public/icon-carbon-neutral.svg"
-            alt=""
+            src={IconCarbonNeutral}
+            alt="Icon Carbon Neutral"
           />
           <p className="text-sm text-colorRose900">
             This is a <span className="font-semibold">carbon-neutral</span>{" "}

@@ -1,7 +1,47 @@
-import ImageWaffleThumbnail from "/public/image-waffle-thumbnail.jpg";
-import ImageWaffleMobile from "/public/image-waffle-mobile.jpg";
-import ImageWaffleTablet from "/public/image-waffle-tablet.jpg";
-import ImageWaffleDesktop from "/public/image-waffle-desktop.jpg";
+import ImageWaffleThumbnail from "./assets/images/image-waffle-thumbnail.jpg";
+import ImageWaffleMobile from "./assets/images/image-waffle-mobile.jpg";
+import ImageWaffleTablet from "./assets/images/image-waffle-tablet.jpg";
+import ImageWaffleDesktop from "./assets/images/image-waffle-desktop.jpg";
+
+import ImageCremeBruleeThumbnail from "./assets/images/image-creme-brulee-thumbnail.jpg";
+import ImageCremeBruleeMobile from "./assets/images/image-creme-brulee-mobile.jpg";
+import ImageCremeBruleeTablet from "./assets/images/image-creme-brulee-tablet.jpg";
+import ImageCremeBruleeDesktop from "./assets/images/image-creme-brulee-desktop.jpg";
+
+import ImageMacaronThumbnail from "./assets/images/image-macaron-thumbnail.jpg";
+import ImageMacaronMobile from "./assets/images/image-macaron-mobile.jpg";
+import ImageMacaronTablet from "./assets/images/image-macaron-tablet.jpg";
+import ImageMacaronDesktop from "./assets/images/image-macaron-desktop.jpg";
+
+import ImageTiramisuThumbnail from "./assets/images/image-tiramisu-thumbnail.jpg";
+import ImageTiramisuMobile from "./assets/images/image-tiramisu-mobile.jpg";
+import ImageTiramisuTablet from "./assets/images/image-tiramisu-tablet.jpg";
+import ImageTiramisuDesktop from "./assets/images/image-tiramisu-desktop.jpg";
+
+import ImageBaklavaThumbnail from "./assets/images/image-baklava-thumbnail.jpg";
+import ImageBaklavaMobile from "./assets/images/image-baklava-mobile.jpg";
+import ImageBaklavaTablet from "./assets/images/image-baklava-tablet.jpg";
+import ImageBaklavaDesktop from "./assets/images/image-baklava-desktop.jpg";
+
+import ImageMeringueThumbnail from "./assets/images/image-meringue-thumbnail.jpg";
+import ImageMeringueMobile from "./assets/images/image-meringue-mobile.jpg";
+import ImageMeringueTablet from "./assets/images/image-meringue-tablet.jpg";
+import ImageMeringueDesktop from "./assets/images/image-meringue-desktop.jpg";
+
+import ImageCakeThumbnail from "./assets/images/image-cake-thumbnail.jpg";
+import ImageCakeMobile from "./assets/images/image-cake-mobile.jpg";
+import ImageCakeTablet from "./assets/images/image-cake-tablet.jpg";
+import ImageCakeDesktop from "./assets/images/image-cake-desktop.jpg";
+
+import ImageBrownieThumbnail from "./assets/images/image-brownie-thumbnail.jpg";
+import ImageBrownieMobile from "./assets/images/image-brownie-mobile.jpg";
+import ImageBrownieTablet from "./assets/images/image-brownie-tablet.jpg";
+import ImageBrownieDesktop from "./assets/images/image-brownie-desktop.jpg";
+
+import ImagePannaCottaThumbnail from "./assets/images/image-panna-cotta-thumbnail.jpg";
+import ImagePannaCottaMobile from "./assets/images/image-panna-cotta-mobile.jpg";
+import ImagePannaCottaTablet from "./assets/images/image-panna-cotta-tablet.jpg";
+import ImagePannaCottaDesktop from "./assets/images/image-panna-cotta-desktop.jpg";
 
 export const ProductsData = [
   {
@@ -19,10 +59,10 @@ export const ProductsData = [
   {
     id: "2",
     image: {
-      thumbnail: "/public/image-creme-brulee-thumbnail.jpg",
-      mobile: "/public/image-creme-brulee-mobile.jpg",
-      tablet: "/public/image-creme-brulee-tablet.jpg",
-      desktop: "/public/image-creme-brulee-desktop.jpg",
+      thumbnail: ImageCremeBruleeThumbnail,
+      mobile: ImageCremeBruleeMobile,
+      tablet: ImageCremeBruleeTablet,
+      desktop: ImageCremeBruleeDesktop,
     },
     name: "Vanilla Bean Crème Brûlée",
     category: "Crème Brûlée",
@@ -31,10 +71,10 @@ export const ProductsData = [
   {
     id: "3",
     image: {
-      thumbnail: "/public/image-macaron-thumbnail.jpg",
-      mobile: "/public/image-macaron-mobile.jpg",
-      tablet: "/public/image-macaron-tablet.jpg",
-      desktop: "/public/image-macaron-desktop.jpg",
+      thumbnail: ImageMacaronThumbnail,
+      mobile: ImageMacaronMobile,
+      tablet: ImageMacaronTablet,
+      desktop: ImageMacaronDesktop,
     },
     name: "Macaron Mix of Five",
     category: "Macaron",
@@ -43,10 +83,10 @@ export const ProductsData = [
   {
     id: "4",
     image: {
-      thumbnail: "/public/image-tiramisu-thumbnail.jpg",
-      mobile: "/public/image-tiramisu-mobile.jpg",
-      tablet: "/public/image-tiramisu-tablet.jpg",
-      desktop: "/public/image-tiramisu-desktop.jpg",
+      thumbnail: ImageTiramisuThumbnail,
+      mobile: ImageTiramisuMobile,
+      tablet: ImageTiramisuTablet,
+      desktop: ImageTiramisuDesktop,
     },
     name: "Classic Tiramisu",
     category: "Tiramisu",
@@ -55,10 +95,10 @@ export const ProductsData = [
   {
     id: "5",
     image: {
-      thumbnail: "/public/image-baklava-thumbnail.jpg",
-      mobile: "/public/image-baklava-mobile.jpg",
-      tablet: "/public/image-baklava-tablet.jpg",
-      desktop: "/public/image-baklava-desktop.jpg",
+      thumbnail: ImageBaklavaThumbnail,
+      mobile: ImageBaklavaMobile,
+      tablet: ImageBaklavaTablet,
+      desktop: ImageBaklavaDesktop,
     },
     name: "Pistachio Baklava",
     category: "Baklava",
@@ -67,10 +107,10 @@ export const ProductsData = [
   {
     id: "6",
     image: {
-      thumbnail: "/public/image-meringue-thumbnail.jpg",
-      mobile: "/public/image-meringue-mobile.jpg",
-      tablet: "/public/image-meringue-tablet.jpg",
-      desktop: "/public/image-meringue-desktop.jpg",
+      thumbnail: ImageMeringueThumbnail,
+      mobile: ImageMeringueMobile,
+      tablet: ImageMeringueTablet,
+      desktop: ImageMeringueDesktop,
     },
     name: "Lemon Meringue Pie",
     category: "Pie",
@@ -79,10 +119,10 @@ export const ProductsData = [
   {
     id: "7",
     image: {
-      thumbnail: "/public/image-cake-thumbnail.jpg",
-      mobile: "/public/image-cake-mobile.jpg",
-      tablet: "/public/image-cake-tablet.jpg",
-      desktop: "/public/image-cake-desktop.jpg",
+      thumbnail: ImageCakeThumbnail,
+      mobile: ImageCakeMobile,
+      tablet: ImageCakeTablet,
+      desktop: ImageCakeDesktop,
     },
     name: "Red Velvet Cake",
     category: "Cake",
@@ -91,10 +131,10 @@ export const ProductsData = [
   {
     id: "8",
     image: {
-      thumbnail: "/public/image-brownie-thumbnail.jpg",
-      mobile: "/public/image-brownie-mobile.jpg",
-      tablet: "/public/image-brownie-tablet.jpg",
-      desktop: "/public/image-brownie-desktop.jpg",
+      thumbnail: ImageBrownieThumbnail,
+      mobile: ImageBrownieMobile,
+      tablet: ImageBrownieTablet,
+      desktop: ImageBrownieDesktop,
     },
     name: "Salted Caramel Brownie",
     category: "Brownie",
@@ -103,10 +143,10 @@ export const ProductsData = [
   {
     id: "9",
     image: {
-      thumbnail: "/public/image-panna-cotta-thumbnail.jpg",
-      mobile: "/public/image-panna-cotta-mobile.jpg",
-      tablet: "/public/image-panna-cotta-tablet.jpg",
-      desktop: "/public/image-panna-cotta-desktop.jpg",
+      thumbnail: ImagePannaCottaThumbnail,
+      mobile: ImagePannaCottaMobile,
+      tablet: ImagePannaCottaTablet,
+      desktop: ImagePannaCottaDesktop,
     },
     name: "Vanilla Panna Cotta",
     category: "Panna Cotta",

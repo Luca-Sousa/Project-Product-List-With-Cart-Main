@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProductCardProps } from "../types";
 import { MinusCircle, PlusCircle } from "lucide-react";
+import IconAddToCart from "../assets/icons/icon-add-to-cart.svg"
 
 export function ProductCard({ product, onQuantityChange, reset, onReset }: ProductCardProps) {
   const [quantityOfItems, setQuantityOfItems] = useState(0);
@@ -58,7 +59,7 @@ export function ProductCard({ product, onQuantityChange, reset, onReset }: Produ
           >
             <img
               className="size-5"
-              src="/public/icon-add-to-cart.svg"
+              src={IconAddToCart}
               alt="Icon Add to Card"
             />
             <p className="font-semibold text-colorRose900 group-hover:text-colorRed">
