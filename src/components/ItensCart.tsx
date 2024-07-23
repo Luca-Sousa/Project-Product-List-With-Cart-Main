@@ -27,10 +27,12 @@ export function ItensCart({
             </div>
           </div>
 
-          <XCircle
+          <button
             onClick={() => handleRemoveProduct(product.id)}
-            className="size-5 text-colorRose300 cursor-pointer hover:scale-125 hover:text-colorRose900"
-          />
+            className="text-colorRose300 cursor-pointer hover:scale-125 hover:text-colorRose900"
+          >
+            <XCircle className="size-5" />
+          </button>
         </ul>
       ))}
     </div>
