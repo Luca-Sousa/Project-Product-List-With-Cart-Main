@@ -18,3 +18,14 @@ export interface ProductCardProps {
   reset: boolean;
   onReset: (productId: string) => void;
 }
+
+export interface ModalProps {
+  selectedProducts: Product[];
+  totalValue: number;
+  handleNewOrder: () => void;
+}
+
+export interface ItensCartProps {
+  selectedProducts: Product[];
+  handleRemoveProduct: (productId: string) => void;
+}

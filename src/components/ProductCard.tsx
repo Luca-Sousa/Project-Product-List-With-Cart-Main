@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { ProductCardProps } from "../types";
 import { MinusCircle, PlusCircle } from "lucide-react";
-import IconAddToCart from "../assets/icons/icon-add-to-cart.svg"
+import IconAddToCart from "../assets/icons/icon-add-to-cart.svg";
 
-export function ProductCard({ product, onQuantityChange, reset, onReset }: ProductCardProps) {
+export function ProductCard({
+  product,
+  onQuantityChange,
+  reset,
+  onReset,
+}: ProductCardProps) {
   const [quantityOfItems, setQuantityOfItems] = useState(0);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
