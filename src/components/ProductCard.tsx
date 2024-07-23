@@ -70,22 +70,14 @@ export function ProductCard({
 
         <button
           onClick={handleAddToCartClick}
-          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 group xl:w-4/6 lg:w-3/4 md:w-1/2 sm:w-3/4 xs:w-1/2"
+          className={`${
+            isButtonVisible ? "flex" : "hidden"
+          } w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 group bg-colorRose50 items-center justify-center gap-2 rounded-full py-3 border-2 border-colorRose300 hover:border-colorRed xl:w-4/6 lg:w-3/4 md:w-1/2 sm:w-3/4 xs:w-1/2"`}
         >
-          <div
-            className={`${
-              isButtonVisible ? "flex" : "hidden"
-            } bg-colorRose50 items-center justify-center gap-2 rounded-full py-3 border border-colorRose300 group-hover:border-colorRed`}
-          >
-            <img
-              className="size-5"
-              src={IconAddToCart}
-              alt="Icon Add to Card"
-            />
-            <p className="font-semibold text-colorRose900 group-hover:text-colorRed">
-              Add to Cart
-            </p>
-          </div>
+          <img className="size-5" src={IconAddToCart} alt="Icon Add to Card" />
+          <p className="font-semibold text-colorRose900 group-hover:text-colorRed">
+            Add to Cart
+          </p>
         </button>
 
         <div
@@ -97,7 +89,7 @@ export function ProductCard({
             onClick={DecrementQuantitysItems}
             className="rounded-full cursor-pointer hover:bg-colorRose50"
           >
-            <MinusCircle className="size-6 text-colorRose100 hover:scale-125 hover:text-colorRed" />
+            <MinusCircle className="size-6 text-colorRose100 hover:text-colorRed" />
           </div>
 
           <div className="text-colorRose100">{quantityOfItems}</div>
@@ -106,7 +98,7 @@ export function ProductCard({
             onClick={IncrementQuantitysItems}
             className="rounded-full cursor-pointer hover:bg-colorRose50"
           >
-            <PlusCircle className="size-6 text-colorRose100 hover:scale-125  hover:text-colorRed" />
+            <PlusCircle className="size-6 text-colorRose100 hover:text-colorRed" />
           </div>
         </div>
       </div>

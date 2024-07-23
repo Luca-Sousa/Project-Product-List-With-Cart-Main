@@ -7,7 +7,7 @@ export function Modal({
   handleNewOrder,
 }: ModalProps) {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/60 xs:items-end xs:justify-start">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/60 xs:items-end">
       <div className="w-[480px] h-fit bg-colorRose50 p-6 rounded-xl space-y-4 xs:w-full xs:rounded-none xs:rounded-t-2xl">
         <CheckCircle className="size-10 text-colorGreen" />
 
