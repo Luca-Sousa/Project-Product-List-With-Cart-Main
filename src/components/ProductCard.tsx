@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Product } from "../types";
+import { MinusCircle, PlusCircle } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -45,19 +46,21 @@ export function ProductCard({ product, onQuantityChange }: ProductCardProps) {
 
         <button
           onClick={handleAddToCartClick}
-          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2"
+          className="w-1/2 absolute top-[93%] left-1/2 -translate-x-1/2 group"
         >
           <div
             className={`${
               isButtonVisible ? "flex" : "hidden"
-            } bg-colorRose50 items-center justify-center gap-2 rounded-full py-3 border border-colorRose300`}
+            } bg-colorRose50 items-center justify-center gap-2 rounded-full py-3 border border-colorRose300 group-hover:border-colorRed`}
           >
             <img
               className="size-5"
               src="/public/icon-add-to-cart.svg"
               alt="Icon Add to Card"
             />
-            <p className="font-semibold text-colorRose900">Add to Cart</p>
+            <p className="font-semibold text-colorRose900 group-hover:text-colorRed">
+              Add to Cart
+            </p>
           </div>
         </button>
 
@@ -68,26 +71,18 @@ export function ProductCard({ product, onQuantityChange }: ProductCardProps) {
         >
           <div
             onClick={DecrementQuantitysItems}
-            className="rounded-full border p-1 cursor-pointer hover:scale-110"
+            className="rounded-full cursor-pointer hover:bg-colorRose50"
           >
-            <img
-              className="size-3"
-              src="/public/icon-decrement-quantity.svg"
-              alt="Icon Decrement Quantity"
-            />
+            <MinusCircle className="size-6 text-colorRose100 hover:scale-125 hover:text-colorRed" />
           </div>
 
           <div className="text-colorRose100">{quantityOfItems}</div>
 
           <div
             onClick={IncrementQuantitysItems}
-            className="rounded-full border p-1 cursor-pointer hover:scale-110"
+            className="rounded-full cursor-pointer hover:bg-colorRose50"
           >
-            <img
-              className="size-3"
-              src="/public/icon-increment-quantity.svg"
-              alt="Icon Increment Quantity"
-            />
+            <PlusCircle className="size-6 text-colorRose100 hover:scale-125  hover:text-colorRed" />
           </div>
         </div>
       </div>
